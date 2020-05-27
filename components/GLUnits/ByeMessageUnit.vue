@@ -26,6 +26,9 @@
       <div class="px-3 mb-2 text-3xl md:text-4xl font-bold">
         Thanks for visiting!
       </div>
+      <div class="px-3 mb-2" v-if="profile">
+        <img :src="profile.photoImg" class="w-12 h-12 rounded-full object-center object-cover" alt="">
+      </div>
       <div class="px-3 mt-1 text-gray-600">
         Best wishes,
       </div>

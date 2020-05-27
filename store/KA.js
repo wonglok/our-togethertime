@@ -3,6 +3,7 @@ export const getWS = () => {
   let testing = 'ws://' + location.hostname + ':3333'
   let staging = 'wss://ws-staging.kindnessapi.com'
   let production = 'wss://ws.kindnessapi.com'
+
   if (process.env.NODE_ENV === 'development') {
     return testing
   }
@@ -12,6 +13,7 @@ export const getWS = () => {
   if (process.env.NODE_ENV === 'production') {
     return production
   }
+
   return testing
 }
 
