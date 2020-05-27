@@ -41,4 +41,7 @@ export default {
      */
     extend(config, ctx) {},
   },
+  buildModules: [
+    '@nuxtjs/tailwindcss'
+  ]
 };
