@@ -1,4 +1,5 @@
-import axios from 'axios'
+// import axios from 'axios'
+import { Profile } from './KA.js'
 
 export const state = () => ({
   config: {
@@ -8,7 +9,8 @@ export const state = () => ({
     isHub: false,
   },
   preload: {
-  }
+  },
+  profile: false
 })
 
 export const mutations = {
@@ -42,17 +44,22 @@ export const mutations = {
   },
   setPreload (state, data) {
     state.preload = data
+  },
+  setProfile (state, data) {
+    state.profile = data
   }
 }
 
 export const actions = {
-  async loadUser ({ commit }, { account }) {
-    commit('setPreload', { account })
+  async loadProfile ({ commit }, { account }) {
+    let profile = await Profile.getProfileByUsername({ username: account })
+    commit('setProfile', profile)
   },
   async loadHub ({ commit }) {
     commit('setPreload', {})
   },
-  async loadHome ({ commit, state, dispatch }, { params }) {
+
+  async init ({ commit, state, dispatch }, { params }) {
     commit('scanType', params)
 
     let config = state.config
@@ -62,7 +69,7 @@ export const actions = {
       })
     } else if (config.page === 'user' && config.account) {
       await dispatch({
-        type: 'loadUser',
+        type: 'loadProfile',
         account: config.account
       })
     }

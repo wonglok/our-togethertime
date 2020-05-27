@@ -20,7 +20,7 @@ export default {
   },
   async asyncData({ isDev, route, store, env, params, query, req, res, redirect, error }) {
     await store.dispatch({
-      type: 'domain/loadHome',
+      type: 'domain/init',
       params: { req, query }
     })
     return {}

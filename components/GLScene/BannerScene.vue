@@ -30,11 +30,11 @@
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
 
-    <O3D :animated="true" :layout="'frontlayout'" v-if="!isHub">
-      <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="account"></TextureText>
+    <O3D :animated="true" :layout="'frontlayout'" v-if="!isHub && profile">
+      <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.displayName"></TextureText>
 
       <O3D layout="subtitle">
-        <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Welcome!'"></TextureText>
+        <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.bio"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
@@ -64,7 +64,7 @@
     <!-- <O3D :animated="true" :layout="'rain'">
       <ParametricRain></ParametricRain>
     </O3D> -->
-    <p>{{ domain }}</p>
+    <!-- <p>{{ domain }}</p> -->
   </O3D>
 </template>
 
@@ -90,7 +90,8 @@ export default {
       domain: (state) => state.domain,
       config: (state) => state.domain.config,
       isHub: (state) => state.domain.config.isHub,
-      account: (state) => state.domain.config.account
+      account: (state) => state.domain.config.account,
+      profile: (state) => state.domain.profile
     })
   },
   mixins: [Tree],
@@ -186,9 +187,9 @@ export default {
         'frontlayout': {
           py: '50',
 
-          sx: 8.0,
-          sy: 8.0,
-          sz: 8.0
+          sx: 10.0,
+          sy: 10.0,
+          sz: 10.0
         },
         'subtitle': {
           py: -10,

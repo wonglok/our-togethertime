@@ -4,6 +4,7 @@
 
     <div v-show="!openMenu">
       <HeroUnit></HeroUnit>
+      <DiscoverWritersUnit></DiscoverWritersUnit>
       <FooterUnit></FooterUnit>
     </div>
     <!-- <div class="w-full h-full"></div> -->
