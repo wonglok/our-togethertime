@@ -441,6 +441,26 @@ export class Profile {
     })
   }
 
+  static async getSomeRandomProfiles ({ count = 10 }) {
+    let resp = axios({
+      baseURL: getRESTURL(),
+      method: 'POST',
+      url: '/access-profile',
+      headers: getHeader(),
+      data: {
+        method: 'get-random',
+        payload: {
+          count
+        }
+      }
+    })
+    return resp.then((r) => {
+      return r.data
+    }, (err) => {
+      return Promise.reject(err)
+    })
+  }
+
 
   static async getProfileByUsername ({ username }) {
     let resp = axios({

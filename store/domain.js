@@ -8,8 +8,7 @@ export const state = () => ({
     page: 'hub',
     isHub: false,
   },
-  preload: {
-  },
+  randomProfiles: false,
   profile: false
 })
 
@@ -42,8 +41,8 @@ export const mutations = {
       config.isHub = true
     }
   },
-  setPreload (state, data) {
-    state.preload = data
+  setRandomAuthours (state, data) {
+    state.randomProfiles = data
   },
   setProfile (state, data) {
     state.profile = data
@@ -56,7 +55,8 @@ export const actions = {
     commit('setProfile', profile)
   },
   async loadHub ({ commit }) {
-    commit('setPreload', {})
+    let profiles = await Profile.getSomeRandomProfiles({ count: 5 })
+    commit('setRandomAuthours', profiles)
   },
 
   async init ({ commit, state, dispatch }, { params }) {
