@@ -20,7 +20,7 @@ export default {
   mixins: [PipeScissor],
   computed: {
     ...mapState({
-      page: 'page'
+      domain: 'domain'
     })
   },
   data () {

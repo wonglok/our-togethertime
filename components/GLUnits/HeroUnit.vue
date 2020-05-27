@@ -3,8 +3,11 @@
     <ScissorArea class="taller">
       <div slot="dom" class="relative full">
         <div class="absolute top-0 left-0 p-6 text-white text-xl">
-          <a href="https://our.togethertime.me/">
+          <a v-if="isHub" href="https://our.togethertime.me/">
             Our.TogetherTime.me
+          </a>
+          <a v-if="!isHub && account" :href="`https://${account}.our.togethertime.me/`">
+            {{ account }}.our.togethertime.me
           </a>
         </div>
       </div>
@@ -15,10 +18,18 @@
 
 <script>
 // import { Auth } from '../../../APIs/KA'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     ...require('../webgl').default
+  },
+  computed: {
+    ...mapState({
+      // isHub: state => state.domain.config.isHub,
+      isHub: state => state.domain.config.isHub,
+      account: state => state.domain.config.account
+    })
   },
   data () {
     return {

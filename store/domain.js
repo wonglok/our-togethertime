@@ -4,7 +4,8 @@ export const state = () => ({
   config: {
     host: '',
     account: false,
-    page: 'hub'
+    page: 'hub',
+    isHub: false,
   },
   preload: {
   }
@@ -23,16 +24,20 @@ export const mutations = {
       if (query.user) {
         config.account = query.user
         config.page = 'user'
+        config.isHub = false
       } else {
         config.account = false
         config.page = 'hub'
+        config.isHub = true
       }
     } else if (config.host.indexOf('.our.togethertime.me') !== -1) {
-      config.account = config.host.splti('.our.togethertime.me')[0]
+      config.account = config.host.split('.our.togethertime.me')[0]
       config.page = 'user'
+      config.isHub = false
     } else {
       config.account = false
       config.page = 'hub'
+      config.isHub = true
     }
   },
   setPreload (state, data) {

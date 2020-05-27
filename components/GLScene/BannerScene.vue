@@ -30,6 +30,15 @@
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
 
+    <O3D :animated="true" :layout="'frontlayout'" v-if="!isHub">
+      <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="account"></TextureText>
+
+      <O3D layout="subtitle">
+        <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Welcome!'"></TextureText>
+      </O3D>
+      <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
+    </O3D>
+
     <!--
     -->
     <!-- <O3D :animated="true" :layout="'rain'">
@@ -80,7 +89,8 @@ export default {
     ...mapState({
       domain: (state) => state.domain,
       config: (state) => state.domain.config,
-      isHub: (state) => state.domain.config.page === 'hub'
+      isHub: (state) => state.domain.config.isHub,
+      account: (state) => state.domain.config.account
     })
   },
   mixins: [Tree],
