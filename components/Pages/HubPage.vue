@@ -4,9 +4,6 @@
 
     <div v-show="!openMenu">
       <HeroUnit></HeroUnit>
-      <MomentumUnit></MomentumUnit>
-      <ENV2Unit></ENV2Unit>
-      <iGraphUnit></iGraphUnit>
       <FooterUnit></FooterUnit>
     </div>
     <!-- <div class="w-full h-full"></div> -->

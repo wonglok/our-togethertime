@@ -24,7 +24,7 @@ async function importAll (r, type) {
 importAll(require.context('~/components/Reusable', true, /\.vue$/, 'sync'), 'sync')
 importAll(require.context('~/components/GLUnits', true, /\.vue$/, 'sync'), 'sync')
 
-importAll(require.context('~/components/GLScene', true, /\.vue$/, 'lazy'), 'lazy')
+importAll(require.context('~/components/GLScene', true, /\.vue$/, 'sync'), 'sync')
 importAll(require.context('~/components/GLContent', true, /\.vue$/, 'lazy'), 'lazy')
 
 export default exporter

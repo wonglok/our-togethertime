@@ -176,9 +176,9 @@ export default {
         'frontlayout': {
           py: '50',
 
-          sx: 10.75,
-          sy: 10.75,
-          sz: 10.75
+          sx: 8.0,
+          sy: 8.0,
+          sz: 8.0
         },
         'subtitle': {
           py: -10,
