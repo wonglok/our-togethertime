@@ -106,7 +106,7 @@ export default {
       this.$emit('child', sizing)
       this.$parent.$emit('child', sizing)
 
-      let mat = new MeshBasicMaterial({ color: 0xffffff, opacity: 1, map: texture, transparent: true, envMap: this.envMap })
+      let mat = new MeshBasicMaterial({ color: 0xffffff, opacity: 1, map: texture, depthWrite: false, transparent: true, envMap: this.envMap })
       let item = new Mesh(geo, mat)
       this.o3d.children.forEach((v) => {
         this.$emit('disable-play', v)

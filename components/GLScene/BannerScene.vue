@@ -70,6 +70,10 @@
       <LensArea></LensArea>
     </O3D> -->
 
+    <!-- <O3D :animated="true" layout="bgarea">
+      <Spacewalk :shaderCube="shaderCube"></Spacewalk>
+    </O3D> -->
+
   </O3D>
 </template>
 
@@ -161,9 +165,9 @@ export default {
 
     var Params = {
       exposure: 1,
-      bloomStrength: 1.75,
-      bloomThreshold: 0.251,
-      bloomRadius: 1.0
+      bloomStrength: 1.5,
+      bloomThreshold: 0.3,
+      bloomRadius: 1.2
     }
     let renderer = this.lookup('renderer')
     let element = this.lookup('element')
