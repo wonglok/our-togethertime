@@ -1,24 +1,24 @@
 <template>
   <div class="">
-    <div class="stickymobile md:relative bg-gray-400 text-2xl flex justify-between items-center">
-      <div class="p-3 ">
+    <div class="stickymobile md:relative bg-blue-300 text-2xl flex justify-between items-center">
+      <div class="p-3">
         My Kindness Content
       </div>
       <div class="block md:hidden">
         <img src="~/assets/image/menu.svg" class="cursor-pointer p-4" @click="context.openMenu = !context.openMenu" alt="">
       </div>
     </div>
-    <div class="stickymobilemenu md:hidden bg-gray-200" v-if="context.openMenu">
+    <div class="stickymobilemenu md:hidden bg-blue-100" v-if="context.openMenu">
       <ContentMenuUnit :context="context"></ContentMenuUnit>
     </div>
     <div class="md:hidden">
       <ContentMainArea :context="context"></ContentMainArea>
     </div>
     <div class="hidden md:flex justify-start">
-      <div class="aside-bar bg-gray-300">
+      <div class="aside-bar bg-blue-100">
         <ContentMenuUnit :context="context"></ContentMenuUnit>
       </div>
-      <div class="main-content bg-gray-200">
+      <div class="main-content bg-blue-200">
         <ContentMainArea :context="context"></ContentMainArea>
       </div>
     </div>
