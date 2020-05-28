@@ -194,7 +194,7 @@ export default {
             pz: -500,
           },
           'frontlayout': {
-            py: '90',
+            py: `child.height * 8.0`,
 
             sx: 10.0 * (1.0 - parentScrollBox.page),
             sy: 10.0 * (1.0 - parentScrollBox.page),

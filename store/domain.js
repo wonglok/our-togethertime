@@ -21,7 +21,7 @@ export const mutations = {
       config.host = window.location.host
     }
 
-    if (config.host.indexOf('localhost:') === 0) {
+    if (config.host.indexOf('localhost:') === 0 || config.host.indexOf('192.168.0.104:')) {
       if (query.user) {
         config.account = query.user
         config.page = 'user'
