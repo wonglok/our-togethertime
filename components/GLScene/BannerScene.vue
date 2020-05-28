@@ -215,7 +215,7 @@ export default {
           // }
         }
         this.layouts.subtitle = {
-          py: `child.height * -0.7`,
+          py: `child.height * -1.4`,
           sx: 0.4,
           sy: 0.4,
           sz: 0.4

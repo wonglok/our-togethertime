@@ -80,8 +80,10 @@ export default {
       texture.redraw()
       // let defaultSize = texture.image.width * 0.075
 
-      let defaultSize = this.screen.width * 0.09
-
+      let defaultSize = this.screen.width * 0.08
+      if (defaultSize > 150) {
+        defaultSize = 150
+      }
       let width = defaultSize
       let height = defaultSize * (texture.image.height) / (texture.image.width)
       let geo = new PlaneBufferGeometry(width, height, 2, 2)
