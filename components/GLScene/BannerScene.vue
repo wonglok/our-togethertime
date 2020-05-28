@@ -24,7 +24,7 @@
     <O3D :animated="true" :layout="'frontlayout'" v-if="isHub">
       <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Our Together Time'"></TextureText>
 
-      <O3D layout="subtitle">
+      <O3D  :animated="true" layout="subtitle">
         <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'by YOU AND ME !'"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
@@ -33,7 +33,7 @@
     <O3D :animated="true" :layout="'frontlayout'" v-if="!isHub && profile">
       <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.displayName"></TextureText>
 
-      <O3D layout="subtitle">
+      <O3D  :animated="true" layout="subtitle">
         <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.bio"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
@@ -194,7 +194,7 @@ export default {
             pz: -500,
           },
           'frontlayout': {
-            py: `child.height * 8.0`,
+            py: `50`,
 
             sx: 10.0 * (1.0 - parentScrollBox.page),
             sy: 10.0 * (1.0 - parentScrollBox.page),
@@ -214,7 +214,7 @@ export default {
           // }
         }
         this.layouts.subtitle = {
-          py: `child.height * -1.4`,
+          py: `-15`,
           sx: 0.55,
           sy: 0.55,
           sz: 0.55
