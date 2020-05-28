@@ -142,9 +142,9 @@ export class ShaderCubeRefraction {
         void main (void) {
           vec2 uv = gl_FragCoord.xy / resolution.xy;
           gl_FragColor = vec4(vec3(
-            1.0 - pattern(uv * 13.333 + -0.8 * cos(time * 0.1)),
+            1.0 - pattern(uv * 13.333 + -0.15 * cos(time * 0.1)),
             1.0 - pattern(uv * 13.333 + 0.0 * cos(time * 0.1)),
-            1.0 - pattern(uv * 13.333 + 0.8 * cos(time * 0.1))
+            1.0 - pattern(uv * 13.333 + 0.15 * cos(time * 0.1))
           ), 1.0);
         }
       `

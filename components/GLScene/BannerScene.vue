@@ -203,7 +203,7 @@ export default {
         }
 
         this.layouts.subtitle = {
-          py: `${-this.text1.height * 0.6}`,
+          py: `${this.text1.height * -0.9}`,
           sx: 0.55,
           sy: 0.55,
           sz: 0.55
