@@ -125,7 +125,7 @@ export default {
     //   this.settings[settingsName] = stub
     // })
 
-    // let parentScrollBox = this.lookup('scrollBox')
+    let parentScrollBox = this.lookup('scrollBox')
 
     let looper = () => {
       // if (!parentScrollBox) { return }
@@ -147,7 +147,7 @@ export default {
           sx: 1.0,
           sy: 1.0,
           sz: 1.0,
-          pz: 0
+          pz: (1.0 - parentScrollBox.page) * 2500
         }
       }
     }
