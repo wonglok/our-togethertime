@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="absolute top-0 left-0 p-6 text-white text-xl">
-      <a v-if="isHub" href="https://our.togethertime.me/">
+      <a href="https://our.togethertime.me/">
         <img src="~/assets/image/home-white.svg" alt="Home">
       </a>
-      <a v-if="!isHub && account" :href="`https://${account}.our.togethertime.me/`">
+      <!-- <a v-if="!isHub && account" :href="`https://${account}.our.togethertime.me/`">
         <img src="~/assets/image/home-white.svg" alt="Home">
-      </a>
+      </a> -->
     </div>
-    <div class="absolute top-0 right-0 p-6 text-white text-xl">
+    <!-- <div class="absolute top-0 right-0 p-6 text-white text-xl">
       <a v-if="!isHub && account" :href="`https://our.togethertime.me/`">
         <img src="~/assets/image/article-list-white.svg" alt="Discover">
       </a>
-    </div>
+    </div> -->
   </div>
 </template>
 
