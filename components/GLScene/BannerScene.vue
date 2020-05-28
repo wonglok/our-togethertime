@@ -184,8 +184,8 @@ export default {
 
     let parentScrollBox = this.lookup('scrollBox')
     let looper = () => {
-      // console.log(parentScrollBox)
       if (!parentScrollBox) { return }
+      // console.log(parentScrollBox)
       // if (!this.settings[cheery]) { return }
       // let time = window.performance.now() * 0.001
       // let setting = this.settings[cheery]
@@ -199,20 +199,9 @@ export default {
             sx: 10.0 * (1.0 - parentScrollBox.page),
             sy: 10.0 * (1.0 - parentScrollBox.page),
             sz: 10.0 * (1.0 - parentScrollBox.page)
-          },
-          // 'frontlayer': {
-          //   pz: (this.camera.position.z - this.camera.position.z * 0.1),
-          //   sx: 100,
-          //   sy: 100,
-          //   sz: 100
-          // }
-          // 'rain': {
-          //   pz: `-1000`
-          // }
-          // 'rain': {
-          //   rz: `${Math.PI * 2} * ${parentScrollBox.page}`
-          // }
+          }
         }
+
         this.layouts.subtitle = {
           py: `${-this.text1.height * 0.6}`,
           sx: 0.55,

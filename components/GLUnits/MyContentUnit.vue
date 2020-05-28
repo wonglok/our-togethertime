@@ -1,7 +1,7 @@
 <template>
   <div class="">
-    <div class="stickymobile md:relative p-3 bg-gray-400 text-2xl flex justify-between items-center">
-      <div>
+    <div class="stickymobile md:relative bg-gray-400 text-2xl flex justify-between items-center">
+      <div class="p-3 ">
         My Kindness Content
       </div>
       <div class="block md:hidden">
