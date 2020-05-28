@@ -5,7 +5,7 @@
         My Kindness Content
       </div>
       <div class="block md:hidden">
-        <img src="~/assets/image/menu.svg" class="cursor-pointer" @click="context.openMenu = !context.openMenu" alt="">
+        <img src="~/assets/image/menu.svg" class="cursor-pointer p-4" @click="context.openMenu = !context.openMenu" alt="">
       </div>
     </div>
     <div class="stickymobilemenu md:hidden bg-gray-200" v-if="context.openMenu">

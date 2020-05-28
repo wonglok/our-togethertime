@@ -29,7 +29,7 @@ export default {
 }
 @screen lg {
   .webgl-banner{
-    height: 60vmin;
+    height: 70vmin;
   }
 }
 .textshadow{
