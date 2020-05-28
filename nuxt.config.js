@@ -1,7 +1,7 @@
 export default {
   server: {
     port: 3000,
-    host: '192.168.0.104',
+    host: '0.0.0.0',
     timing: false
   },
   mode: 'spa',

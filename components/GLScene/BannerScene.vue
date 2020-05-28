@@ -22,10 +22,10 @@
     </O3D>
 
     <O3D :animated="true" :layout="'frontlayout'" v-if="isHub">
-      <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Our Together Time'"></TextureText>
+      <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Our Together Time ✞'"></TextureText>
 
-      <O3D  :animated="true" layout="subtitle">
-        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :scale="0.75" :text="'by YOU AND ME !'"></TextureText>
+      <O3D :animated="true" layout="subtitle">
+        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :scale="0.75" :text="`BE with you, always. ✨`"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
@@ -33,7 +33,7 @@
     <O3D :animated="true" :layout="'frontlayout'" v-if="!isHub && profile">
       <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.displayName"></TextureText>
 
-      <O3D  :animated="true" layout="subtitle">
+      <O3D :animated="true" layout="subtitle">
         <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :scale="0.75" :text="profile.bio"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
@@ -201,9 +201,9 @@ export default {
           'frontlayout': {
             py: `${(this.text1.height * 2 + this.text2.height) * 1.5}`,
 
-            sx: 6 * (1.0 - parentScrollBox.page),
-            sy: 6 * (1.0 - parentScrollBox.page),
-            sz: 6 * (1.0 - parentScrollBox.page)
+            sx: 8 * (1.0 - parentScrollBox.page),
+            sy: 8 * (1.0 - parentScrollBox.page),
+            sz: 8 * (1.0 - parentScrollBox.page)
           }
         }
 

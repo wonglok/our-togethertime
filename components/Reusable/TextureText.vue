@@ -82,8 +82,8 @@ export default {
       })
       texture.redraw()
       // let defaultSize = texture.image.width * 0.075
-
-      let defaultSize = this.screen.width * 0.08 * this.scale
+      let minAxis = this.screen.width < this.screen.height ? this.screen.width : this.screen.height
+      let defaultSize = minAxis * 0.1 * this.scale
 
       let width = defaultSize
       let height = defaultSize * (texture.image.height) / (texture.image.width)
