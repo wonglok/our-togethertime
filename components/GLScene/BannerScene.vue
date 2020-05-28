@@ -201,9 +201,9 @@ export default {
           'frontlayout': {
             py: `${(this.text1.height * 2 + this.text2.height) * 1.5}`,
 
-            sx: 10.0 * (1.0 - parentScrollBox.page),
-            sy: 10.0 * (1.0 - parentScrollBox.page),
-            sz: 10.0 * (1.0 - parentScrollBox.page)
+            sx: 6 * (1.0 - parentScrollBox.page),
+            sy: 6 * (1.0 - parentScrollBox.page),
+            sz: 6 * (1.0 - parentScrollBox.page)
           }
         }
 
