@@ -1,6 +1,9 @@
 import axios from 'axios'
 export const getWS = () => {
-  let testing = 'ws://' + location.hostname + ':3333'
+  let testing = 'ws://' + '192.168.0.104' + ':3333'
+  if (process.client) {
+    testing = 'ws://' + location.hostname + ':3333'
+  }
   let staging = 'wss://ws-staging.kindnessapi.com'
   let production = 'wss://ws.kindnessapi.com'
 
@@ -18,7 +21,10 @@ export const getWS = () => {
 }
 
 export const getRESTURL = () => {
-  let testing = 'http://' + location.hostname + ':3333'
+  let testing = 'http://' + '192.168.0.104' + ':3333'
+  if (process.client) {
+    testing = 'http://' + location.hostname + ':3333'
+  }
   let staging = 'https://api-staging.kindnessapi.com'
   let production = 'https://api.kindnessapi.com'
   if (process.env.NODE_ENV === 'development') {
@@ -34,8 +40,12 @@ export const getRESTURL = () => {
 }
 
 export const getHeader = () => {
-  return {
-    'X-Token': Auth.currentProfile.jwt
+  if (Auth.currentProfile) {
+    return {
+      'X-Token': Auth.currentProfile.jwt
+    }
+  } else {
+    return {}
   }
 }
 
@@ -392,7 +402,9 @@ export class Auth {
   }
 }
 
-Auth.loadProfiles()
+if (process.client) {
+  Auth.loadProfiles()
+}
 
 export class Profile {
   static async getProfilesByQuery ({ query }) {

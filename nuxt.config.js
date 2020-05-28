@@ -1,4 +1,9 @@
 export default {
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+    timing: false
+  },
   mode: 'spa',
   /*
    ** Headers of the page

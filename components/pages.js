@@ -20,7 +20,7 @@ async function importAll (r, type) {
   return exporter
 }
 
-importAll(require.context('~/components/Pages', true, /\.vue$/, 'sync'), 'sync')
+importAll(require.context('~/components/Pages', true, /\.vue$/, 'lazy'), 'lazy')
 // importAll(require.context('~/components/Reusable', true, /\.vue$/, 'sync'), 'sync')
 // importAll(require.context('~/components/GLUnits', true, /\.vue$/, 'sync'), 'sync')
 

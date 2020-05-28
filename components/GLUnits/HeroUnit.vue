@@ -11,8 +11,10 @@
 
 <script>
 // import { Auth } from '../../../APIs/KA'
+import { Tree } from '../Reusable'
 
 export default {
+  mixin: [Tree],
   components: {
     ...require('../webgl').default
   },

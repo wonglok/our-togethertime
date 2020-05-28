@@ -154,7 +154,6 @@ export default {
     //   this.settings[cheery] = stub
     // })
 
-    // let parentScrollBox = this.lookup('scrollBox')
     var Params = {
       exposure: 1,
       bloomStrength: 1.75,
@@ -183,23 +182,23 @@ export default {
 
     this.$parent.$emit('composer', this.composer)
 
-    let baseWidth = window.innerWidth * 0.2
-
+    let parentScrollBox = this.lookup('scrollBox')
     let looper = () => {
-      // if (!parentScrollBox) { return }
+      // console.log(parentScrollBox)
+      if (!parentScrollBox) { return }
       // if (!this.settings[cheery]) { return }
       // let time = window.performance.now() * 0.001
       // let setting = this.settings[cheery]
         this.layouts = {
           'bglayer': {
-            pz: '-1600'
+            pz: -500,
           },
           'frontlayout': {
-            py: '50',
+            py: '90',
 
-            sx: 10.0,
-            sy: 10.0,
-            sz: 10.0
+            sx: 10.0 * (1.0 - parentScrollBox.page),
+            sy: 10.0 * (1.0 - parentScrollBox.page),
+            sz: 10.0 * (1.0 - parentScrollBox.page)
           },
           // 'frontlayer': {
           //   pz: (this.camera.position.z - this.camera.position.z * 0.1),
@@ -216,9 +215,9 @@ export default {
         }
         this.layouts.subtitle = {
           py: `child.height * -1.4`,
-          sx: 0.4,
-          sy: 0.4,
-          sz: 0.4
+          sx: 0.55,
+          sy: 0.55,
+          sz: 0.55
         }
     }
 

@@ -14,7 +14,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { PipeScissor } from '../Reusable'
+import { PipeScissor, makeScrollBox } from '../Reusable'
 
 export default {
   name: 'Home',
@@ -26,6 +26,7 @@ export default {
   },
   data () {
     return {
+      scrollBox: false,
       openMenu: false,
       origColor: ''
       // bgColor: '#fafafa'
@@ -36,7 +37,7 @@ export default {
       window.dispatchEvent(new Event('resize'))
     })
 
-    // this.scrollBox = makeScrollBox({ dom: window, base: this.base })
+    this.scrollBox = makeScrollBox({ dom: window, base: this.base })
     // this.origColor = document.body.style.backgroundColor
     // document.body.style.backgroundColor = this.bgColor
   },
