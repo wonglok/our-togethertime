@@ -33,8 +33,8 @@ export default {
     this.$on('init', async () => {
       let screen = await this.getScreen()
 
-      let SIM_X = 256
-      let SIM_Y = 256
+      let SIM_X = 128
+      let SIM_Y = 128
 
       let settings = {
         u_mode: { value: 0 },

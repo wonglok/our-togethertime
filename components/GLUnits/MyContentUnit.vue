@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <div class="stickymobile md:relative p-3 bg-gray-400 text-2xl flex justify-between items-center">
       <div>
         My Kindness Content
