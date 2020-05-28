@@ -194,7 +194,7 @@ export default {
             pz: -500,
           },
           'frontlayout': {
-            py: `50`,
+            py: `${this.text1.height}`,
 
             sx: 10.0 * (1.0 - parentScrollBox.page),
             sy: 10.0 * (1.0 - parentScrollBox.page),
@@ -214,7 +214,7 @@ export default {
           // }
         }
         this.layouts.subtitle = {
-          py: `-15`,
+          py: `${-this.text1.height * 0.6}`,
           sx: 0.55,
           sy: 0.55,
           sz: 0.55
