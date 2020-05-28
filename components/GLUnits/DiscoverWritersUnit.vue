@@ -23,12 +23,12 @@
               <tbody>
                 <tr class="hover:bg-blue-200" v-for="(profile, pi) in profiles" :key="pi">
                   <td class="p-3 cursor-pointer">
-                    <a class="full" :href="`https://${profile.username}.our.togethertime.me`">
+                    <a class="full inline-block" :href="`https://${profile.username}.our.togethertime.me`">
                       <img :src="profile.photoImg" class="w-12 h-12 rounded-full object-center object-cover" alt="">
                     </a>
                   </td>
                   <td class="p-3 cursor-pointer">
-                    <a class="full" :href="`https://${profile.username}.our.togethertime.me`">
+                    <a class="full inline-block" :href="`https://${profile.username}.our.togethertime.me`">
                       {{ profile.displayName }}
                     </a>
                   </td>

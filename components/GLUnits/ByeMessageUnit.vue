@@ -38,13 +38,6 @@
         </div>
       </div>
     </div>
-
-    <a v-if="isHub" href="https://our.togethertime.me/">
-      <img src="~/assets/image/home-white.svg" alt="Home">
-    </a>
-    <a v-if="!isHub && account" :href="`https://${account}.our.togethertime.me/`">
-      <img src="~/assets/image/home-white.svg" alt="Home">
-    </a>
   </div>
 </template>
 
@@ -52,6 +45,9 @@
 import { mapState } from 'vuex'
 
 export default {
+  components: {
+    ...require('../webgl').default
+  },
   computed: {
     ...mapState({
       // isHub: state => state.domain.config.isHub,
