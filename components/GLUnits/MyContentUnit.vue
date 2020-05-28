@@ -1,16 +1,18 @@
 <template>
   <div ref="topbar"  class="">
-    <div class="stickymobile md:relative bg-blue-300 text-2xl flex justify-between items-center" @click="$emit('scroll-to-menu')">
-      <div class="p-3">
+    <div class="stickymobile md:relative bg-blue-300 text-2xl flex justify-between items-center">
+      <div class="p-3"  @click="$emit('scroll-to-menu')">
         My Kindness Content
       </div>
       <div class="block md:hidden">
         <img src="~/assets/image/menu.svg" class="cursor-pointer p-4" @click="context.openMenu = !context.openMenu" alt="">
       </div>
     </div>
+    <transition name="fade">
     <div class="stickymobilemenu md:hidden bg-blue-100" v-if="context.openMenu">
       <ContentMenuUnit @gotop="$emit('scroll-to-menu')" :context="context"></ContentMenuUnit>
     </div>
+    </transition>
     <div class="md:hidden">
       <ContentMainArea :context="context"></ContentMainArea>
     </div>
@@ -105,5 +107,12 @@ export default {
     position: relative;
     top: inherit;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
