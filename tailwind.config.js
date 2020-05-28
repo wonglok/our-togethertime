@@ -5,9 +5,17 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 module.exports = {
-  theme: {},
-  variants: {},
-  plugins: [],
+  theme: {
+    radialGradientColors: theme => {
+      return theme('colors')
+    },
+    conicGradientColors: theme => {
+      return theme('colors')
+    },
+  },
+  plugins: [
+    require('tailwindcss-gradients'),
+  ],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',

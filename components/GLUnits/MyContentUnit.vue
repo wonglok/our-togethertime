@@ -1,23 +1,25 @@
 <template>
-  <div ref="topbar"  class="">
-    <div class="stickymobile md:relative bg-blue-300 text-2xl flex justify-between items-center">
+  <div ref="topbar">
+    <div class="stickymobile md:relative text-2xl bg-blue-300 flex justify-between items-center">
       <div class="p-3"  @click="$emit('scroll-to-menu')">
         Kindness Content
+        <img src="~/assets/image/up.svg" class="inline-block cursor-pointer ml-3" @click="$emit('scroll-to-menu')" alt="go to top">
       </div>
-      <div class="block md:hidden">
-        <img src="~/assets/image/menu.svg" class="cursor-pointer p-4" @click="context.openMenu = !context.openMenu" alt="">
+      <div>
+        <img src="~/assets/image/menu.svg" class="block md:hidden cursor-pointer p-4" @click="context.openMenu = !context.openMenu" alt="">
       </div>
     </div>
     <transition name="fade">
-      <div class="stickymobilemenu md:hidden bg-blue-100" v-if="context.openMenu">
+      <div class="stickymobilemenu md:hidden" v-if="context.openMenu">
         <ContentMenuUnit @gotop="$emit('scroll-to-menu')" :context="context"></ContentMenuUnit>
       </div>
     </transition>
     <div class="md:hidden">
       <ContentMainArea :context="context"></ContentMainArea>
     </div>
-    <div class="hidden md:flex justify-start ">
-      <div class="aside-bar bg-blue-100">
+
+    <div class="hidden md:flex justify-start">
+      <div class="aside-bar">
         <ContentMenuUnit @gotop="$emit('scroll-to-menu')" :context="context"></ContentMenuUnit>
       </div>
       <div class="main-content bg-blue-200">
@@ -129,5 +131,10 @@ export default {
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+.aside-bar-pos{
+  top: 60px;
+  background-color: white;
 }
 </style>
