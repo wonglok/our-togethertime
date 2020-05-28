@@ -12,6 +12,9 @@ import { Mesh, PlaneBufferGeometry, MeshBasicMaterial } from 'three'
 export default {
   props: {
     text: {},
+    scale: {
+      default: 1
+    },
     font: {
       default: 'LoveLo'
     },
@@ -66,7 +69,7 @@ export default {
         align: this.align || 'center',
         fillStyle: 'white',
         fontFamily: `${this.font || 'Arial'}, sans-serif`,
-        fontSize: 120,
+        fontSize: 140,
         fontStyle: 'normal',
         fontVariant: 'normal',
         fontWeight: 'normal',
@@ -80,10 +83,8 @@ export default {
       texture.redraw()
       // let defaultSize = texture.image.width * 0.075
 
-      let defaultSize = this.screen.width * 0.08
-      if (defaultSize > 150) {
-        defaultSize = 150
-      }
+      let defaultSize = this.screen.width * 0.08 * this.scale
+
       let width = defaultSize
       let height = defaultSize * (texture.image.height) / (texture.image.width)
       let geo = new PlaneBufferGeometry(width, height, 2, 2)
@@ -126,6 +127,9 @@ export default {
       this.$emit('exec')
     })
     this.$watch('font', () => {
+      this.$emit('try-init')
+    })
+    this.$watch('scale', () => {
       this.$emit('try-init')
     })
     this.$watch('align', () => {

@@ -25,7 +25,7 @@
       <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Our Together Time'"></TextureText>
 
       <O3D  :animated="true" layout="subtitle">
-        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'by YOU AND ME !'"></TextureText>
+        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :scale="0.75" :text="'by YOU AND ME !'"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
@@ -34,7 +34,7 @@
       <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.displayName"></TextureText>
 
       <O3D  :animated="true" layout="subtitle">
-        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.bio"></TextureText>
+        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :scale="0.75" :text="profile.bio"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
@@ -194,7 +194,7 @@ export default {
             pz: -500,
           },
           'frontlayout': {
-            py: `${this.text1.height}`,
+            py: `${(this.text1.height * 2 + this.text2.height) * 1.5}`,
 
             sx: 10.0 * (1.0 - parentScrollBox.page),
             sy: 10.0 * (1.0 - parentScrollBox.page),
@@ -203,10 +203,10 @@ export default {
         }
 
         this.layouts.subtitle = {
-          py: `${this.text1.height * -0.9}`,
-          sx: 0.55,
-          sy: 0.55,
-          sz: 0.55
+          py: `${this.text1.height * -1}`,
+          sx: 1.0,
+          sy: 1.0,
+          sz: 1.0
         }
     }
 
