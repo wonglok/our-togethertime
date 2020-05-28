@@ -66,7 +66,7 @@ export default {
         align: this.align || 'center',
         fillStyle: 'white',
         fontFamily: `${this.font || 'Arial'}, sans-serif`,
-        fontSize: 140,
+        fontSize: 120,
         fontStyle: 'normal',
         fontVariant: 'normal',
         fontWeight: 'normal',
@@ -78,15 +78,16 @@ export default {
         text: this.text
       })
       texture.redraw()
-      let defaultSize = texture.image.width * 0.075
+      // let defaultSize = texture.image.width * 0.075
 
-      if (defaultSize > this.screen.width * 0.9) {
-        defaultSize = this.screen.width * 0.9
-      }
+      let defaultSize = this.screen.width * 0.09
 
       let width = defaultSize
       let height = defaultSize * (texture.image.height) / (texture.image.width)
       let geo = new PlaneBufferGeometry(width, height, 2, 2)
+
+      this.$emit('width', width)
+      this.$emit('height', height)
 
       geo.computeBoundingSphere()
       geo.computeBoundingBox()

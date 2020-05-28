@@ -22,19 +22,19 @@
     </O3D>
 
     <O3D :animated="true" :layout="'frontlayout'" v-if="isHub">
-      <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Our Together Time'"></TextureText>
+      <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Our Together Time'"></TextureText>
 
       <O3D layout="subtitle">
-        <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'by YOU ADN ME !'"></TextureText>
+        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'by YOU AND ME !'"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
 
     <O3D :animated="true" :layout="'frontlayout'" v-if="!isHub && profile">
-      <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.displayName"></TextureText>
+      <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.displayName"></TextureText>
 
       <O3D layout="subtitle">
-        <TextureText :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.bio"></TextureText>
+        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="profile.bio"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
@@ -97,6 +97,14 @@ export default {
   mixins: [Tree],
   data () {
     return {
+      text1: {
+        width: 0,
+        height: 0
+      },
+      text2: {
+        width: 0,
+        height: 0
+      },
       shaderCube: false,
       composer: false,
       settings: {},
@@ -175,43 +183,46 @@ export default {
 
     this.$parent.$emit('composer', this.composer)
 
+    let baseWidth = window.innerWidth * 0.2
+
     let looper = () => {
       // if (!parentScrollBox) { return }
       // if (!this.settings[cheery]) { return }
       // let time = window.performance.now() * 0.001
       // let setting = this.settings[cheery]
-      this.layouts = {
-        'bglayer': {
-          pz: '-1600'
-        },
-        'frontlayout': {
-          py: '50',
+        this.layouts = {
+          'bglayer': {
+            pz: '-1600'
+          },
+          'frontlayout': {
+            py: '50',
 
-          sx: 10.0,
-          sy: 10.0,
-          sz: 10.0
-        },
-        'subtitle': {
-          py: -10,
-          sx: 0.5,
-          sy: 0.5,
-          sz: 0.5
+            sx: 10.0,
+            sy: 10.0,
+            sz: 10.0
+          },
+          // 'frontlayer': {
+          //   pz: (this.camera.position.z - this.camera.position.z * 0.1),
+          //   sx: 100,
+          //   sy: 100,
+          //   sz: 100
+          // }
+          // 'rain': {
+          //   pz: `-1000`
+          // }
+          // 'rain': {
+          //   rz: `${Math.PI * 2} * ${parentScrollBox.page}`
+          // }
         }
-        // 'frontlayer': {
-        //   pz: (this.camera.position.z - this.camera.position.z * 0.1),
-        //   sx: 100,
-        //   sy: 100,
-        //   sz: 100
-        // }
-        // 'rain': {
-        //   pz: `-1000`
-        // }
-        // 'rain': {
-        //   rz: `${Math.PI * 2} * ${parentScrollBox.page}`
-        // }
-      }
+        this.layouts.subtitle = {
+          py: `child.height * -0.7`,
+          sx: 0.4,
+          sy: 0.4,
+          sz: 0.4
+        }
     }
 
+    this.lookup('base').onResize(looper)
     this.lookup('base').onLoop(looper)
   }
 }
