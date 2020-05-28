@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div class="stickymobile md:relative bg-blue-300 text-2xl flex justify-between items-center">
+  <div ref="topbar"  class="">
+    <div class="stickymobile md:relative bg-blue-300 text-2xl flex justify-between items-center" @click="$emit('scroll-to-menu')">
       <div class="p-3">
         My Kindness Content
       </div>
@@ -9,14 +9,14 @@
       </div>
     </div>
     <div class="stickymobilemenu md:hidden bg-blue-100" v-if="context.openMenu">
-      <ContentMenuUnit :context="context"></ContentMenuUnit>
+      <ContentMenuUnit @gotop="$emit('scroll-to-menu')" :context="context"></ContentMenuUnit>
     </div>
     <div class="md:hidden">
       <ContentMainArea :context="context"></ContentMainArea>
     </div>
-    <div class="hidden md:flex justify-start">
+    <div class="hidden md:flex justify-start ">
       <div class="aside-bar bg-blue-100">
-        <ContentMenuUnit :context="context"></ContentMenuUnit>
+        <ContentMenuUnit @gotop="$emit('scroll-to-menu')" :context="context"></ContentMenuUnit>
       </div>
       <div class="main-content bg-blue-200">
         <ContentMainArea :context="context"></ContentMainArea>
@@ -29,6 +29,15 @@
 import { mapState } from 'vuex'
 
 export default {
+  mounted () {
+    this.$on('scroll-to-menu', () => {
+      try {
+        this.$refs.topbar.scrollIntoView({ behavior: 'smooth' })
+      } catch (e) {
+        console.log(e)
+      }
+    })
+  },
   components: {
     ...require('../webgl').default
   },
@@ -78,14 +87,14 @@ export default {
 }
 .stickymobile{
   position: sticky;
-  top: 0vmin;
+  top: -1px;
 }
-@screen md{
+/* @screen md{
   .stickymobile{
     position: relative;
     top: inherit;
   }
-}
+} */
 .stickymobilemenu{
   position: sticky;
   top: 60px;
