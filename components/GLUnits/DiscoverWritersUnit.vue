@@ -7,11 +7,11 @@
         <div class="h-24 lg:h-32 xl:h-32"></div>
         <div class="lg:px-4 max-w-xl mx-auto lg:ml-auto">
           <div class="px-3 mb-2 text-3xl md:text-4xl font-bold">
-            Discover Authours
+            Discover Authors
           </div>
 
           <div class="px-3 mb-3">
-            Here are some random authours for you! 🥰
+            Here are some random authors for you! 🥰
           </div>
           <div class="px-3">
             <table>

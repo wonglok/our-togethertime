@@ -35,7 +35,7 @@
     -->
     <!-- <Church></Church> -->
 
-    <Spacewalk :shaderCube="shaderCube"></Spacewalk>
+
     <!-- <LoveloFont :envMap="shaderCube.out.envMap"></LoveloFont> -->
     <!-- <HolyCross :shaderCube="shaderCube"></HolyCross> -->
 
@@ -53,9 +53,9 @@
       </O3D>
     </O3D> -->
 
-    <!-- <O3D :animated="true" layout="lensarea">
-      <LensArea></LensArea>
-    </O3D> -->
+    <O3D :animated="true" layout="bgarea">
+      <Spacewalk :shaderCube="shaderCube"></Spacewalk>
+    </O3D>
 
   </O3D>
 </template>
@@ -140,11 +140,14 @@ export default {
       // let cb3or = setting['flower3-offfset-rotation']
 
       this.layouts = {
+        lensarea: {
+          pz: 500
+        },
         bgarea: {
           sx: 1.0,
           sy: 1.0,
           sz: 1.0,
-          pz: -3000
+          pz: 0
         }
       }
     }

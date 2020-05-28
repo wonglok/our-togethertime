@@ -65,6 +65,11 @@
       <ParametricRain></ParametricRain>
     </O3D> -->
     <!-- <p>{{ domain }}</p> -->
+
+    <!-- <O3D :animated="true" layout="lensarea">
+      <LensArea></LensArea>
+    </O3D> -->
+
   </O3D>
 </template>
 
@@ -204,6 +209,12 @@ export default {
 
         this.layouts.subtitle = {
           py: `${this.text1.height * -1}`,
+          sx: 1.0,
+          sy: 1.0,
+          sz: 1.0
+        }
+        this.layouts.lensarea = {
+          pz: `300`,
           sx: 1.0,
           sy: 1.0,
           sz: 1.0
