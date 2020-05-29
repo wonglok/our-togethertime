@@ -55,7 +55,7 @@ export const actions = {
     commit('setProfile', profile)
   },
   async loadHub ({ commit }) {
-    let profiles = await Profile.getSomeRandomProfiles({ count: 5 })
+    let profiles = await Profile.getSomeRandomProfiles({ count: 10 })
     commit('setRandomAuthours', profiles)
   },
 

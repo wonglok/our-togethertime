@@ -4,7 +4,7 @@
 
 
       <div class="scissor-left scissor-text flex-col justify-center items-center">
-        <div class="h-24 lg:h-32 xl:h-32"></div>
+        <div class="h-24 lg:h-32 xl:h-64"></div>
         <div class="lg:px-4 max-w-xl mx-auto lg:ml-auto">
           <div class="px-3 mb-2 text-3xl md:text-4xl font-bold">
             Discover Authors
@@ -13,29 +13,23 @@
           <div class="px-3 mb-3">
             Here are some random authors for you! 🥰
           </div>
-          <div class="px-3">
-            <table>
-              <tbody>
-                <tr class="hover:bg-blue-200" v-for="(profile, pi) in profiles" :key="pi">
-                  <td class="p-3 cursor-pointer">
-                    <a class="full inline-block" :href="`https://${profile.username}.our.togethertime.me`">
-                      <img :src="profile.photoImg" class="w-12 h-12 rounded-full object-center object-cover" alt="">
-                    </a>
-                  </td>
-                  <td class="p-3 cursor-pointer">
-                    <a class="full inline-block" :href="`https://${profile.username}.our.togethertime.me`">
-                      {{ profile.displayName }}
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="pr-3">
+            <a class="inline-block pr-3 hover:bg-blue-200 rounded-full" v-for="(profile, pi) in profiles" :key="pi" :href="`https://${profile.username}.our.togethertime.me`">
+              <div class="flex justify-start items-center">
+                <div class="p-3 cursor-pointer  inline-flex justify-center items-center">
+                  <img :src="profile.photoImg" class="w-12 h-12 rounded-full object-center object-cover" alt="">
+                </div>
+                <div class="p-3 pl-0 w-32 cursor-pointer inline-flex justify-start items-center">
+                  {{ profile.displayName }}
+                </div>
+              </div>
+            </a>
           </div>
 
           <!-- {{ profiles }} -->
 
         </div>
-        <div class="h-24 lg:h-32 xl:h-32"></div>
+        <div class="h-24 lg:h-32 xl:h-64"></div>
       </div>
 
       <ScissorArea class="scissor-right" style="z-index: -1;">
