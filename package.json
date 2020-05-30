@@ -8,6 +8,8 @@
     "dev": "nuxt",
     "build": "nuxt generate",
     "start": "nuxt start",
+    "deploy": "npm run build; npm run vercel; npm run git",
+    "vercel": "vercel --prod",
     "git": "git add .; git commit -am \"git backup\"; git push -u origin master"
   },
   "dependencies": {
