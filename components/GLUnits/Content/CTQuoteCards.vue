@@ -32,6 +32,9 @@ export default {
     ...mapState({
       docs: (state) => state.quotes.docs
     }),
+    ...mapState({
+      account: (state) => state.domain.config.account
+    }),
     ...mapGetters({
       quotes: 'quotes/getQuotesFromDocs'
     })
@@ -41,8 +44,10 @@ export default {
   },
   methods: {
     async onInit () {
+      console.log(this.account)
       await this.$store.dispatch({
-        type: 'quotes/loadQuotes'
+        type: 'quotes/loadQuotes',
+        username: this.account
       })
     }
   }
