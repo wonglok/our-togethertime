@@ -19,10 +19,12 @@
     "nuxt": "^2.0.0",
     "quad-indices": "^2.0.1",
     "raw-loader": "^4.0.1",
+    "slug": "^3.2.0",
     "stats.js": "^0.17.0",
     "tailwindcss": "^1.4.6",
     "tailwindcss-gradients": "^3.0.0",
-    "three": "^0.116.1"
+    "three": "^0.116.1",
+    "twitter-text": "^3.1.0"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^2.0.0",

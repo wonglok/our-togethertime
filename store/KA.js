@@ -539,3 +539,105 @@ export class Profile {
     })
   }
 }
+
+var twitter = require('twitter-text').default
+var slugMaker = require('slug')
+export class Quotes {
+  static async searchAllQuotes ({ search, pageAt = 0, perPage = 250 }) {
+    let resp = axios({
+      baseURL: getRESTURL(),
+      method: 'POST',
+      url: '/access-quote',
+      headers: getHeader(),
+      data: {
+        method: 'query',
+        payload: {
+          search,
+          skip: pageAt * perPage,
+          limit: perPage
+        }
+      }
+    })
+
+    return resp.then((r) => {
+      return r.data
+    }, (err) => {
+      return Promise.reject(err)
+    })
+  }
+
+  static async listQuoteDocByUsername ({ username, pageAt = 0, perPage = 25 }) {
+    let resp = axios({
+      baseURL: getRESTURL(),
+      method: 'POST',
+      url: '/access-quote',
+      headers: getHeader(),
+      data: {
+        method: 'query',
+        payload: {
+          username,
+          skip: pageAt * perPage,
+          limit: perPage
+        }
+      }
+    })
+
+    return resp.then((r) => {
+      return r.data
+    }, (err) => {
+      return Promise.reject(err)
+    })
+  }
+
+  static getSlug (e, author) {
+    let mentions = twitter.extractMentions(e)
+    mentions = [...new Set(mentions)]
+
+    let sentence = e
+
+    mentions.forEach(m => {
+      sentence = sentence.replace(`- @${m}`, '')
+      sentence = sentence.replace(`-@${m}`, '')
+    })
+
+    let slug = slugMaker(sentence + ' - by - ' + (mentions[0] || author || 'unknown'))
+    return slug
+  }
+  static scan (paper) {
+    let json = JSON.parse(JSON.stringify(paper.text.match(/(.+)/ig))) || []
+    return json.map((e, idx) => {
+      let mentions = twitter.extractMentions(e)
+      mentions = [...new Set(mentions)]
+
+      let sentence = e
+
+      mentions.forEach(m => {
+        sentence = sentence.replace(`- @${m}`, '')
+        sentence = sentence.replace(`-@${m}`, '')
+      })
+
+      let slug = this.getSlug(e, paper.author)
+      return {
+        username: Auth.currentProfile.user.username,
+        userID: Auth.currentProfile.user.userID,
+        idx: idx,
+        author: paper.author,
+        slug,
+        overrideAutor: mentions[0],
+        generatedAt: new Date(),
+        sentence,
+        raw: e
+      }
+    }).filter(e => e.sentence.trim())
+  }
+  static getTemplate () {
+    return {
+      generated: [],
+      title: `My Loving Aphorisms and Quotes`,
+      author: Auth.currentProfile.user.username,
+      published: false,
+      // eslint-disable-next-line
+      text: `Love is right here, be with you, for you!\n\nPractice creates permanence. - @ladygaga\n`
+    }
+  }
+}
