@@ -575,6 +575,7 @@ export class Quotes {
       data: {
         method: 'query',
         payload: {
+          published: true,
           username,
           skip: pageAt * perPage,
           limit: perPage
