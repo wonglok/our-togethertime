@@ -16,10 +16,10 @@
           <div class="px-3 mb-3">
             <a class="inline-block pr-3 hover:bg-blue-200 rounded-full" v-for="(profile, pi) in profiles" :key="pi" :href="`https://${profile.username}.our.togethertime.me`">
               <div class="flex justify-start items-center">
-                <div class="p-3 cursor-pointer  inline-flex justify-center items-center">
+                <div class="p-3 cursor-pointer inline-flex justify-center items-center">
                   <img :src="profile.photoImg" class="w-12 h-12 rounded-full object-center object-cover" alt="">
                 </div>
-                <div class="p-3 pl-0 w-32 cursor-pointer inline-flex justify-center items-center">
+                <div class="p-3 pl-0 w-48 cursor-pointer inline-flex justify-center items-center">
                   {{ profile.displayName }}
                 </div>
               </div>
