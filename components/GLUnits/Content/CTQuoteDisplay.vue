@@ -2,7 +2,8 @@
   <div>
     <div>
       <input type="search" class="m-3 border border-gray-500 text-2xl rounded-full px-4 focus:outline-none" :placeholder="`Filter ${quotes.length} Quotes`" v-model="query">
-      <span v-if="!query">Showing Latest {{ quotes.length > this.maxList ? this.maxList : quotes.length }} Quotes</span>
+      <div class="mx-3" v-if="!query">Showing {{ quotes.length > this.maxList ? this.maxList : quotes.length }} Random Quotes</div>
+      <div class="mx-3" v-if="query">Search result of {{ getQuotes().length }} Quotes</div>
     </div>
     <div class="m-3 mb-5 border-gray-400 border shadow-lg rounded-lg bg-white" v-for="quote in getQuotes()" :key="quote._id">
       <div class="p-3">{{ quote.sentence }}</div>
@@ -30,12 +31,14 @@ export default {
       query: ''
     }
   },
+  mounted () {
+  },
   methods: {
     getQuotes () {
       if (this.query) {
         return this.quotes.filter(this.filterQuotes).slice().reverse()
       } else {
-        return this.quotes.filter((e, i) => i <= this.maxList).slice().reverse()
+        return this.quotes.slice().sort(function() { return 0.5 - Math.random() }).filter((e, i) => i <= this.maxList)
       }
     },
     filterQuotes (item) {
