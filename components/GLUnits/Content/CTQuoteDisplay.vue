@@ -2,7 +2,7 @@
   <div>
     <div>
       <input type="search" class="m-3 border border-gray-500 text-2xl rounded-full px-4 focus:outline-none" :placeholder="`Filter ${quotes.length} Quotes`" v-model="query">
-      <span v-if="!query">Showing Latest {{ quotes.length > 250 ? 250 : quotes.length }} Quotes</span>
+      <span v-if="!query">Showing Latest {{ quotes.length > this.maxList ? this.maxList : quotes.length }} Quotes</span>
     </div>
     <div class="m-3 mb-5 border-gray-400 border shadow-lg rounded-lg bg-white" v-for="quote in getQuotes()" :key="quote._id">
       <div class="p-3">{{ quote.sentence }}</div>
@@ -26,6 +26,7 @@ export default {
   },
   data () {
     return {
+      maxList: 50,
       query: ''
     }
   },
@@ -34,14 +35,13 @@ export default {
       if (this.query) {
         return this.quotes.filter(this.filterQuotes).slice().reverse()
       } else {
-        return this.quotes.filter((e, i) => i <= 250).slice().reverse()
+        return this.quotes.filter((e, i) => i <= this.maxList).slice().reverse()
       }
     },
     filterQuotes (item) {
       try {
         return (item.raw + ` ${item.author}`).match(new RegExp(this.query, 'ig'))
       } catch (e) {
-        //
         console.log(e)
         return true
       }

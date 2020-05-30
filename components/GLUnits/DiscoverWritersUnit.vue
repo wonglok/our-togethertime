@@ -5,7 +5,7 @@
 
       <div class="scissor-left scissor-text flex-col justify-center items-center">
         <div class="h-24 lg:h-32 xl:h-64"></div>
-        <div class="lg:px-4 max-w-xl mx-auto lg:ml-auto">
+        <div class="max-w-lg mx-auto px-6">
           <div class="px-3 mb-2 text-3xl md:text-4xl font-bold">
             Discover Authors
           </div>
@@ -13,7 +13,7 @@
           <div class="px-3 mb-3">
             Here are some random authors for you! 🥰
           </div>
-          <div class="pr-3">
+          <div class="px-3 mb-3">
             <a class="inline-block pr-3 hover:bg-blue-200 rounded-full" v-for="(profile, pi) in profiles" :key="pi" :href="`https://${profile.username}.our.togethertime.me`">
               <div class="flex justify-start items-center">
                 <div class="p-3 cursor-pointer  inline-flex justify-center items-center">
