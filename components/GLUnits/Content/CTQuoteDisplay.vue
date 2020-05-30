@@ -24,7 +24,12 @@ export default {
   },
   methods: {
     filterQuotes (item) {
-      return (item.raw + ` ${item.author}`).match(new RegExp(this.query, 'ig'))
+      try {
+        return (item.raw + ` ${item.author}`).match(new RegExp(this.query, 'ig'))
+      } catch (e) {
+        console.log(e)
+        return true
+      }
     }
   }
 }
