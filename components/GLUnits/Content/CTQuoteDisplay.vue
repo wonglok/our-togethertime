@@ -2,7 +2,7 @@
   <div>
     <div>
       <input type="search" class="m-3 border border-gray-500 text-2xl rounded-full px-4 focus:outline-none" :placeholder="`Filter ${quotes.length} Quotes`" v-model="query">
-      <span v-if="!query">Showing Latest 250 Quotes</span>
+      <span v-if="!query">Showing Latest {{ quotes.length > 250 ? 250 : quotes.length }} Quotes</span>
     </div>
     <div class="m-3 mb-5 border-gray-400 border shadow-lg rounded-lg bg-white" v-for="quote in getQuotes()" :key="quote._id">
       <div class="p-3">{{ quote.sentence }}</div>
@@ -18,7 +18,11 @@
 
 export default {
   props: {
-    quotes: {}
+    quotes: {
+      default () {
+        return []
+      }
+    }
   },
   data () {
     return {
