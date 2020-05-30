@@ -1,7 +1,10 @@
 <template>
   <div>
-    <input type="search" class="m-3 border border-gray-500 text-2xl rounded-full px-4 focus:outline-none" :placeholder="`Filter ${quotes.length} Quotes`" v-model="query">
-    <div class="m-3 mb-5 border-gray-400 border shadow-lg rounded-lg bg-white" v-for="quote in quotes.filter(filterQuotes)" :key="quote._id">
+    <div>
+      <input type="search" class="m-3 border border-gray-500 text-2xl rounded-full px-4 focus:outline-none" :placeholder="`Filter ${quotes.length} Quotes`" v-model="query">
+      <span v-if="!query">Showing Latest 250 Quotes</span>
+    </div>
+    <div class="m-3 mb-5 border-gray-400 border shadow-lg rounded-lg bg-white" v-for="quote in getQuotes()" :key="quote._id">
       <div class="p-3">{{ quote.sentence }}</div>
       <div class="py-2 px-3 text-right border-t border-gray-400 text-xs text-gray-600" v-if="quote.author || quote.overrideAutor">
         {{ quote.overrideAutor || quote.author }}
@@ -23,6 +26,13 @@ export default {
     }
   },
   methods: {
+    getQuotes () {
+      if (this.query) {
+        return this.quotes.filter(this.filterQuotes).slice().reverse()
+      } else {
+        return this.quotes.filter((e, i) => i <= 250).slice().reverse()
+      }
+    },
     filterQuotes (item) {
       try {
         return (item.raw + ` ${item.author}`).match(new RegExp(this.query, 'ig'))
