@@ -61,19 +61,19 @@ export default {
           {
             type: 'poster-auto',
             name: 'Quote Cards'
-          },
-          {
-            type: 'poster-image',
-            name: 'Poster Image'
-          },
-          {
-            type: 'poster-video',
-            name: 'Poster Video'
-          },
-          {
-            type: 'message-video',
-            name: 'Message Video'
           }
+          // {
+          //   type: 'poster-image',
+          //   name: 'Poster Image'
+          // },
+          // {
+          //   type: 'poster-video',
+          //   name: 'Poster Video'
+          // },
+          // {
+          //   type: 'message-video',
+          //   name: 'Message Video'
+          // }
         ],
         selectedMenu: 'poster-auto',
         openMenu: false
