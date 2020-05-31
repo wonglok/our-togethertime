@@ -29,9 +29,11 @@
         <button @click="query = 'funny'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Funny</button>
         <button @click="query = 'free'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Free</button>
         <button @click="query = 'create'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Create</button>
-
-        <button @click="query = kw.keyword" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1" v-for="(kw, ki) in topics.slice(0, 20)" :key="ki">{{ kw.keyword }} ({{kw.count}})</button>
       </div>
+      <div v-if="topics && topics.length > 0" class="mx-3 px-3 py-2 my-3 bg-white border-gray-400 border rounded-lg text-xs">
+        <button @click="query = kw.keyword" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1" v-for="(kw, ki) in topics.slice(0, 35)" :key="ki">{{ kw.keyword }} ({{kw.count}})</button>
+      </div>
+
       <!-- <div>
         <wordcloud
         :data="topics.slice(0, 300)"
@@ -42,6 +44,7 @@
         :wordClick="onClickWord">
         </wordcloud>
       </div> -->
+
       <div class="m-3 mb-5 border-gray-400 border shadow-lg rounded-lg bg-white" v-for="quote in getQuotes()" :key="quote._id">
         <div class="p-3">{{ quote.sentence }}</div>
         <div class="py-2 px-3 text-right border-t border-gray-400 text-xs text-gray-600" v-if="quote.author || quote.overrideAutor">
@@ -81,6 +84,7 @@ export default {
     }
   },
   mounted () {
+    this.topics = this.getTopics()
   },
   watch: {
     quotes () {
