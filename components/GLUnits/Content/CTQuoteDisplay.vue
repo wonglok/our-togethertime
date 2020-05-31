@@ -9,13 +9,16 @@
     </div>
     <div class="mx-3 px-3 py-2 my-3 bg-white border-gray-400 border rounded-lg text-xs">
       <button @click="query = ''" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Reset</button>
+      <button @click="query = 'hope'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Hope</button>
       <button @click="query = 'love'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Love</button>
       <button @click="query = 'thank'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Gratitude</button>
       <button @click="query = 'forgiveness'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Forgiveness</button>
       <button @click="query = 'awareness'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Awareness</button>
       <button @click="query = 'understand'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Understanding</button>
       <button @click="query = 'positive'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Positivity</button>
+      <button @click="query = 'art'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Art</button>
       <button @click="query = 'funny'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Funny</button>
+      <button @click="query = 'free'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Free</button>
       <button @click="query = 'create'" class="px-3 py-1 focus:outline-none focus:bg-gray-400 rounded-lg border border-gray-400 m-1">Create</button>
     </div>
     <div class="m-3 mb-5 border-gray-400 border shadow-lg rounded-lg bg-white" v-for="quote in getQuotes()" :key="quote._id">
@@ -31,8 +34,7 @@
 // import { Quotes } from '../../../../APIs/KA'
 import nlp from 'compromise'
 
-const deDict = require('@shopping24/rake-js/dist/de');
-const rakejs = require('@shopping24/rake-js');
+// const rakejs = require('@shopping24/rake-js');
 
 export default {
   props: {
@@ -52,23 +54,23 @@ export default {
 
   },
   watch: {
-    quotes () {
-      this.getTopics()
-    }
+    // quotes () {
+    //   this.getTopics()
+    // }
   },
   methods: {
-    getTopics () {
-      let text = this.quotes.map(e => e.sentence).join('. \n')
-      const { result } = rakejs.extract(text)
-        // .pipe(rakejs.extractKeyPhrases)
-        // .pipe(rakejs.extractAdjoinedKeyPhrases)
-        // .pipe(rakejs.keywordLengthFilter)
-        // .pipe(rakejs.distinct)
-        // .pipe(rakejs.scoreWordFrequency)
-        // .pipe(rakejs.sortByScore)
+    // getTopics () {
+    //   let text = this.quotes.map(e => e.sentence).join('. \n')
+    //   const { result } = rakejs.extract(text)
+    //     // .pipe(rakejs.extractKeyPhrases)
+    //     // .pipe(rakejs.extractAdjoinedKeyPhrases)
+    //     // .pipe(rakejs.keywordLengthFilter)
+    //     // .pipe(rakejs.distinct)
+    //     // .pipe(rakejs.scoreWordFrequency)
+    //     // .pipe(rakejs.sortByScore)
 
-      return []
-    },
+    //   return []
+    // },
     getQuotes () {
       if (this.query) {
         return this.quotes.filter(this.filterQuotes).slice().reverse()
