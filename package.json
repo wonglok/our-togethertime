@@ -29,7 +29,8 @@
     "tailwindcss": "^1.4.6",
     "tailwindcss-gradients": "^3.0.0",
     "three": "^0.116.1",
-    "twitter-text": "^3.1.0"
+    "twitter-text": "^3.1.0",
+    "vue-wordcloud": "^1.1.1"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^2.0.0",
