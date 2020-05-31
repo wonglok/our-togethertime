@@ -32,7 +32,8 @@
 
 <script>
 // import { Quotes } from '../../../../APIs/KA'
-import nlp from 'compromise'
+// import nlp from 'compromise'
+var keyword_extractor = require("keyword-extractor");
 
 // const rakejs = require('@shopping24/rake-js');
 
@@ -51,26 +52,49 @@ export default {
     }
   },
   mounted () {
-
+    this.getTopics()
   },
   watch: {
-    // quotes () {
-    //   this.getTopics()
-    // }
+    quotes () {
+      this.getTopics()
+    }
   },
   methods: {
-    // getTopics () {
-    //   let text = this.quotes.map(e => e.sentence).join('. \n')
-    //   const { result } = rakejs.extract(text)
-    //     // .pipe(rakejs.extractKeyPhrases)
-    //     // .pipe(rakejs.extractAdjoinedKeyPhrases)
-    //     // .pipe(rakejs.keywordLengthFilter)
-    //     // .pipe(rakejs.distinct)
-    //     // .pipe(rakejs.scoreWordFrequency)
-    //     // .pipe(rakejs.sortByScore)
+    getTopics () {
+      let keywordsIndex = {}
+      let result = this.quotes.map(e => e.sentence).map(word => {
+        var extraction_result = keyword_extractor.extract(word,{
+          language: 'english',
+          remove_digits: true,
+          return_changed_case: true,
+          remove_duplicates: false
+        });
+        extraction_result.forEach((keyword) => {
+          keywordsIndex[keyword] = keywordsIndex[keyword] || 0
+          keywordsIndex[keyword]++
+        });
+        return extraction_result
+      })
+      let infoArr = []
+      for (let keyword in keywordsIndex) {
+        infoArr.push({
+          keyword,
+          count: keywordsIndex[keyword]
+        })
+      }
+      infoArr.sort((a, b) => {
+        if (a.count > b.count) {
+          return -1
+        } else if (a.count < b.count) {
+          return 1
+        } else {
+          return 0
+        }
+      })
 
-    //   return []
-    // },
+      console.log(infoArr)
+      return infoArr
+    },
     getQuotes () {
       if (this.query) {
         return this.quotes.filter(this.filterQuotes).slice().reverse()
