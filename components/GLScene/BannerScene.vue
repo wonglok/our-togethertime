@@ -22,10 +22,10 @@
     </O3D>
 
     <O3D :animated="true" :layout="'frontlayout'" v-if="isHub">
-      <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Our Together Time ✞'"></TextureText>
+      <TextureText @width="text1.width = $event" @height="text1.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :text="'Our Together Time'"></TextureText>
 
       <O3D :animated="true" layout="subtitle">
-        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :scale="0.75" :text="`BE with you, always. ✨`"></TextureText>
+        <TextureText @width="text2.width = $event" @height="text2.height = $event" :envMap="shaderCube.out.envMap" :canplay="true" font="LoveLo" align="left" :clicked="() => {}" :scale="0.75" :text="`✨ Let's Love All. ✨`"></TextureText>
       </O3D>
       <!-- <HeartGrid @hit="$emit('hit', $event)"></HeartGrid> -->
     </O3D>
